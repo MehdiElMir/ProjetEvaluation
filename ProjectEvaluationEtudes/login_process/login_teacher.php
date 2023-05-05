@@ -4,24 +4,26 @@
    include 'config.php';
    
    // Récupérer des informations d'authentification de l'utilisateur
-   $email = $_POST['email'];
-   $password = $_POST['password'];
+   $professor_email = $_POST['email'];
+   $professor_password = $_POST['password'];
    
    // lancer la requête SQL dans la table admin 
-   $requete = "SELECT * FROM professeur WHERE email = '$email' AND password = '$password'";
-   $resultat = mysqli_query($connexion, $requete);
+   $sql =mysqli_query($connexion, "SELECT * FROM `professeur` WHERE `professor_email` = '$professor_email' AND `professor_password` = '$professor_password'");
+   $row = mysqli_fetch_array($sql);
    
    // Vérification du résultat
-   if (mysqli_num_rows($resultat) == 1) {
-       // si valide, on crée une session
-       session_start();
-       $_SESSION["id_professeur"] = $row['id_professeur'];
-       $_SESSION["name"]=$row['name'];
-       // Redirection vers la page d'accueil 
-       header('Location: layout.php');
-   } else {
+
+   if (is_array($row)) {
+    // si valide, on crée une session
+    session_start();
+    $_SESSION["id_professeur"] = $row['id_professeur'];
+    $_SESSION["professor_Lname"]=$row['professor_Lname'];
+    // Redirection vers la page d'accueil 
+    header('Location: ../prof_layout.php');
+}
+   else {
        // pas de résultat
        echo '<script>alert("Nom d\'utilisateur ou mot de passe incorrect.");</script>';
    }
-   ?>
+
 
