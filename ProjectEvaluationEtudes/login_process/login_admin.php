@@ -2,7 +2,7 @@
    
    // Connexion à la base de données
    include 'config.php';
-   
+
    // Récupérer des informations d'authentification de l'utilisateur
    $admin_email = $_POST['email'];
    $admin_password = $_POST['password'];
@@ -21,6 +21,7 @@
        // Redirection vers la page d'accueil 
        header('Location: ../layout.php');
    } else {
+    
        // pas de résultat
        echo '<script>alert("Nom d\'utilisateur ou mot de passe incorrect.");</script>';
    }
