@@ -10,7 +10,6 @@
 </head>
 <body>
     
-
     <header>
         <nav class="p-3 shadow-lg">
             <img src="./assets/logo.png" alt="logo mundiapolis" class="img-size">
