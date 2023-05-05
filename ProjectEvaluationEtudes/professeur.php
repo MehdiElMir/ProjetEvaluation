@@ -38,7 +38,7 @@
 
 
         <div class="login-image">
-            <h2>PROFESSEURS</h2>
+           <h2>PROFESSEURS</h2>
         </div>
     </main>
 
