@@ -10,5 +10,5 @@ https://getcomposer.org/download/
 composer require google/apiclient
 
 - Dont forget to add the name of your database in
-login_process/config.php
+ login_process/config.php
 
