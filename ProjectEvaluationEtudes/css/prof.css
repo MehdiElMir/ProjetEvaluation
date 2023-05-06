@@ -15,7 +15,7 @@ input[type=submit]{
 }
 
 .login-image{
-    background: url("/assets/prof.png");
+    background: url("../assets/prof.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: -800px;
