@@ -113,10 +113,13 @@
             window.location.href = "prof_layout.php";
         } else if (this.status == 400) {
             console.log("Invalid user data");
-            window.location.href = "error.html";
+            alert("make sure to use the right account");
+            location.reload();
             // Handle the error response when user data is invalid
         } else if (this.status == 500) {
             console.log("Internal server error");
+            alert("Internal server error");
+            location.reload();
             // Handle the error response when an internal server error occurs
         }
     }
