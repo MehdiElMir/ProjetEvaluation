@@ -27,11 +27,11 @@
         <div class="sidebar">
             <div class="sidebar-top">
                 <ul>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Enseignants</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/filiers.php">Les Filères</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
+                    <li><a href="../pages/enquetes.php">Les Enquêtes</a></li>
+                    <li><a href="../pages/enseignants.php">Les Enseignants</a></li>
+                    <li><a href="../pages/filiers.php">Les Filères</a></li>
+                    <li><a href="../pages/questionnaire.php">Les Questions</a></li>
+                    <li><a href="../pages/archive.php">Archives</a></li>
                 </ul>
             </div>
             <p class="edit">Edit</p>
