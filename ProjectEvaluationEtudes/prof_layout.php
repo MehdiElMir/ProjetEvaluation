@@ -31,6 +31,7 @@
             <a href="/">
                 <img src="./assets/logo.png" alt="logo mundiapolis" class="img-size">
             </a>
+            <h3 style="float : right;">test</h3>
         </nav>
         
     </header>
@@ -57,7 +58,7 @@
                    
                         $id_subject = $res['id_subject'];
                         $subject_name = $res['subject_name'];
-                        echo '<li><a href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
+                        echo '<li><a style="color: white; text-decoration:none;" href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
                     }
                     echo '</ul>'
                     
@@ -85,34 +86,37 @@
         <tbody>
                 <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>Question 1 ---------------------------------</td>
+                <td>4,5/5</td>
             
                 </tr>
                 <tr>
                 <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
+                <td>Question 2 ---------------------------------</td>
+                <td>3,5/5</td>
                 
                 
                 </tr>
                 <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
+                <th scope="row">2</th>
+                <td>Question 2 ---------------------------------</td>
+                <td>4/5</td>
                 </tr>
             </tbody>
             </table>
 
-            <form method="post">
 
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
+
+            <form method="post">
+            <button type="submit" style="margin-top:5px;" name="boutton-commentaire"class="btn btn-secondary">Afficher les commentaires</button>
+
+            <div class="mb-3" style="width:700px; margin-top :20px;">
+                <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
                 <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
-            <div>
-            <button type="submit" name="boutton-commentaire"class="btn btn-success">Afficher les commentaires</button>
-            <button type="button" class="btn btn-success">Ajouter une action</button>
+            <div style="margin-top:20px;">
+            <button type="submit" class="btn btn-success">Ajouter une action</button>
             </div>
 
 </form>
