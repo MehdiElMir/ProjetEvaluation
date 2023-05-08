@@ -31,7 +31,7 @@
             <a href="/">
                 <img src="./assets/logo.png" alt="logo mundiapolis" class="img-size">
             </a>
-            <h3 style="float : right;">test</h3>
+            
         </nav>
         
     </header>
@@ -40,28 +40,33 @@
     <!-- MAIN CONTENT -->
     <main class="main">
         
-        <div class="sidebar">
+        <div class="sidebar" style="text-align:left;">
             <div class="sidebar-top">
-          
+                <p style="color:white;font-size:30px;margin-top:20px;margin-left:5px;font-weight:bold;">Matières</p>
+
+                <ul style="text-align: left;">
                     <?php
-                
+                    
                     $stql = "SELECT `subject_name`,`subject`.`id_subject`
                     FROM `subject`, `professeur`
                     WHERE `professeur`.`id_professeur` = $id_professeur and
                         `subject`.`professeur_id`=$id_professeur;";
                 
                     $result = mysqli_query($connexion, $stql);
-                    echo '<ul>';
                     while ($res = mysqli_fetch_array($result)) {
                         
-                   
+                
                         $id_subject = $res['id_subject'];
                         $subject_name = $res['subject_name'];
-                        echo '<li><a style="color: white; text-decoration:none;" href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
+                        echo '<li><a style="color: white; 
+                                    text-decoration:none;
+                                    text-align:left;" href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
                     }
-                    echo '</ul>'
                     
-                ?>
+                    ?>
+                    
+                </ul>
+                    
                    
             </div>
            
@@ -73,7 +78,43 @@
     
 
         <div class="main-content">
-        <h3> Nom de matière:</h3>  
+            
+        <h3 style="width:100%;">Nom de matière</h3>
+        
+        <div class="search">
+
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Faculté</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Filière</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Niveau</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option selected>Semestre</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+
+            <button type="button" class="btn btn-outline-success">Filtrer</button>
+
+            </div>
+
         <table class="table">
         <thead>
             <tr>
@@ -109,7 +150,7 @@
             <form method="post">
             <button type="submit" style="margin-top:5px;" name="boutton-commentaire"class="btn btn-secondary">Afficher les commentaires</button>
 
-            <div class="mb-3" style="width:700px; margin-top :20px;">
+            <div class="mb-3" style="width:800px; margin-top :20px;">
                 <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
                 <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
@@ -122,7 +163,6 @@
 
     </main>
     
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 <?php
