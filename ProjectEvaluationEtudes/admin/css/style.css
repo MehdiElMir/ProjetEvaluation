@@ -1,5 +1,5 @@
 :root{
-    --primary: #e826c8;
+    --primary: #9BBA3B;
     --secondary: #0D3C48;
 }
 
@@ -15,7 +15,7 @@ input[type=submit]{
 }
 
 .login-image{
-    background: url("../assets/prof.png");
+    background: url("../assets/campus.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: -800px;
@@ -74,7 +74,6 @@ input[type=submit]{
     color: #000;
     align-items: start;
 }
-
 
 .input-fields{
     width: 500px;

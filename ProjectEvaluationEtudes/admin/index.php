@@ -22,11 +22,11 @@
 
         <!-- Formulaire Login -->
         <div class="login-form">
-            <form action="./login_process/login_admin.php" method="post" class="login-form-control d-flex flex-column py-12">
+            <form action="login.php" method="post" class="login-form-control d-flex flex-column py-12">
                 <h3>Login</h3>
                 <div class="input-fields">
-                    <input class="rounded-pill shadow border border-secondary p-3" placeholder="email" type="text" name="email" id="email" required pattern="[a-z0-9._%+-]+@mundiapolis\.ma$" required>
-                    <input class="rounded-pill shadow border border-secondary p-3" placeholder="password" type="password" name="password" id="password" required>
+                    <input class="rounded-pill shadow border border-secondary p-2" placeholder="email" type="text" name="email" id="email" required>
+                    <input class="rounded-pill shadow border border-secondary p-2" placeholder="password" type="password" name="password" id="passowrd" required>
                 </div>
                 <div class="remember d-flex align-items-center justify-center gap-3">
                     <input type="checkbox" name="se souvenier de moi" id="remember">
@@ -38,7 +38,7 @@
 
 
         <div class="login-image">
-            <h2>Gestionnaire</h2>
+            <h2>Getionnaire</h2>
         </div>
     </main>
 
@@ -66,72 +66,5 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-    <!-- ------------------------------------Authentification Google -->
-    <?php
-    // use sessions, to show the login prompt only if the user is not logged-in
-    //session_start();
- 
-            // paste google client ID and client secret keys
-            $google_oauth_client_id = "507631210326-ov9ided7se74vecolnro3857l1j1nhrm.apps.googleusercontent.com";
-            $google_oauth_client_secret = "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";
-        ?>
-
-        <!-- check if the user is not logged in -->
-        <?php // if (!isset($_SESSION["user"])): ?>
-        
-        <!-- display the login prompt -->
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
-        <div id="g_id_onload"
-            data-client_id="<?php echo $google_oauth_client_id; ?>"
-            data-context="signin"
-            data-callback="googleLoginEndpoint"
-            data-close_on_tap_outside="false">
-        </div>
-        
-        <? // php endif; ?>
-
-    <script>
-    // callback function that will be called when the user is successfully logged-in with Google
-    function googleLoginEndpoint(googleUser) {
-        // get user information from Google
-        console.log(googleUser);
- 
-        // send an AJAX request to register the user in your website
-        var ajax = new XMLHttpRequest();
- 
-        // path of server file
-        ajax.open("POST", "google-sign-in-admin.php", true);
- 
-        // callback when the status of AJAX is changed
-        ajax.onreadystatechange = function () {
- 
-        if (this.readyState == 4) {
-        if (this.status == 200) {
-            console.log(this.responseText);
-            // Redirect to the "layout.php" page on success
-            window.location.href = "layout.php";
-        } else if (this.status == 400) {
-            console.log("Invalid user data");
-            alert("Make sure to use the right account of the administrator");
-            location.reload();
-            // Handle the error response when user data is invalid
-        } else if (this.status == 500) {
-            console.log("Internal server error");
-            alert("Internal server error");
-            location.reload();
-            // Handle the error response when an internal server error occurs
-        }
-    }
-        };
-        
- 
-        // send google credentials in the AJAX request
-        var formData = new FormData();
-        formData.append("id_token", googleUser.credential);
-        ajax.send(formData);
-    }
-</script>
-    
 </body>
 </html>

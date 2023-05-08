@@ -1,0 +1,148 @@
+:root{
+    --primary: #9BBA3B;
+    --secondary: #0D3C48;
+}
+
+*{
+    padding: 0 ;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    width: 100%;
+    list-style: none;   
+    padding: 0;
+}
+
+ul > li {
+    margin-top: 30px;
+    transition: 300ms ease-in-out all;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 4px solid transparent;
+    transition: 300ms all ease-in-out;
+}
+
+
+input, select {
+    outline: none !important;
+    border: 0;
+    background: #e9e8e8;
+}
+
+ul > li > a , .edit{
+    color: #fff;
+    font: bold !important;
+    margin: 0 !important;
+    text-decoration: none;
+}
+
+ul > li:hover, .edit:hover{
+    border-left: 4px solid var(--secondary);
+    background: linear-gradient(to right, #fff, #ffffff00);
+}
+
+.img-size{
+    height: 80px;
+}
+
+.main{
+    display: flex;
+}
+
+.sidebar{
+    background: var(--primary);
+    height: 88.5vh;
+    width: 200px;
+}
+
+.main-content{
+    padding: 35px;
+    width: 100%;
+    gap: 30px;
+    height: 88vh;
+    max-height: 88vh;
+}
+
+.card-container{
+    width: 100%;
+}
+
+.cards, .cards--plus{
+    border-radius: 20px;
+    padding: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #E7E7E7;
+    height: 200px;
+    cursor: pointer;
+}
+
+.cards--plus{
+    align-items: center;
+    justify-content: center;
+}
+
+.progress{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40px;
+    background: #E7E7E7;
+}
+
+.progress > span{
+    color: #0AFF14;
+}
+
+.progress-limit{
+    color: #000 !important;
+}
+
+.progress-bar, .progress-bar-limit{
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+    height: 20%;
+    border-radius: 20px;
+}
+
+.progress-bar::before{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #0AFF14;
+}
+
+.progress-bar-limit::before{
+    content: "";
+    position: absolute;
+    display: block;
+    width: 25%;
+    height: 100%;
+    border-radius: 20px;
+    background-color: #B2B2B2;
+}
+
+.edit{
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    margin-top: 300px !important;
+}
+
+/* BUTTON */
+.btn-custom {
+    background: var(--primary);
+    color: #fff;
+}
