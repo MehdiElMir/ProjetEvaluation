@@ -42,7 +42,6 @@
         <div class="sidebar">
             <div class="sidebar-top">
           
-              
                  
                     <?php
                 
