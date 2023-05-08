@@ -2,7 +2,11 @@
     --primary: #e826c8;
     --secondary: #0D3C48;
 }
+a{
+   color:white;
+   text-decoration: none;
 
+}
 *{
     padding: 0 ;
     margin: 0;

@@ -42,7 +42,6 @@
         <div class="sidebar">
             <div class="sidebar-top">
           
-                 
                     <?php
                 
                     $stql = "SELECT `subject_name`,`subject`.`id_subject`
@@ -57,7 +56,7 @@
                    
                         $id_subject = $res['id_subject'];
                         $subject_name = $res['subject_name'];
-                        echo '<li><a href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
+                        echo '<li><a style="color:white; text-decoration: none;" href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
                     }
                     echo '</ul>'
                     

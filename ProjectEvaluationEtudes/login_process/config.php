@@ -1,6 +1,6 @@
 <?php
 $databaseHost = 'localhost';
-$databaseName = ''; //insert database name here!!!!!!
+$databaseName = 'projet_evaluation'; 
 $databaseUsername ='root';
 $databasePassword = '';
 
