@@ -43,7 +43,6 @@
         <div class="sidebar">
             <div class="sidebar-top">
           
-                 
                     <?php
                 
                     $stql = "SELECT `subject_name`,`subject`.`id_subject`
