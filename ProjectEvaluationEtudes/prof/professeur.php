@@ -21,7 +21,7 @@
 
         <!-- Formulaire Login -->
         <div class="login-form">
-            <form action="./login_process/login_teacher.php" method="post" class="login-form-control d-flex flex-column py-12">
+            <form action="../login_process/login_teacher.php" method="post" class="login-form-control d-flex flex-column py-12">
                 <h3>Login</h3>
                 <div class="input-fields">
                     <input class="rounded-pill shadow border border-secondary p-3" placeholder="email" type="text" name="email" id="email" required pattern="[a-z0-9._%+-]+@mundiapolis\.ma$" required>
@@ -100,8 +100,7 @@
         var ajax = new XMLHttpRequest();
  
         // path of server file
-        ajax.open("POST", "google-sign-in-prof.php", true);
- 
+        ajax.open("POST", "../login_process/google-sign-in-prof.php", true);
         // callback when the status of AJAX is changed
         ajax.onreadystatechange = function () {
  

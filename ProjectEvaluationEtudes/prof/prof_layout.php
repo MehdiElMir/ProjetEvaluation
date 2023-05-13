@@ -8,9 +8,7 @@
             $id_professeur =  $_SESSION["id_professeur"] ;
             $professor_Lname=  $_SESSION["professor_Lname"] ;
             extract($_POST);
-            include("./login_process/config.php");
-            
-                
+            include("../login_process/config.php");      
 ?>
     
     <meta charset="UTF-8">
@@ -78,42 +76,63 @@
     
 
         <div class="main-content">
+
+        <div class="search">
+                <form action="aside.php" style="display: flex;flex-direction: row;align-items: center;">
+                    <select class="form-select form-select-sm" id="faculty">
+                        <option value="default" selected="selected">--- Facultés</option>
+                    <?php  
+                    $stql = "SELECT faculty.id_faculty, faculty.faculty_name FROM faculty;";
+                            $result = mysqli_query($connexion, $stql);
+                            while ($res = mysqli_fetch_array($result)) {
+                                $faculty_name = $res['faculty_name'];
+                                $id_faculty = $res['id_faculty'];
+                                echo ' <option value= "'.$id_faculty.'">'. $faculty_name .' </option>';
+                            }
+                    ?>
+                    </select>
+
+                    <select class="form-select form-select-sm" id="filieres">
+                            <option value="">Selectionnez une filière</option>
+                        <?php  
+                   /* $stql = "SELECT branch.id_branch, branch.branch_name FROM branch;";
+                            $result = mysqli_query($connexion, $stql);
+                            while ($res = mysqli_fetch_array($result)) {
+                                $branch_name = $res['branch_name'];
+                                $id_branch = $res['id_branch'];
+                                echo ' <option value= "'.$id_branch.'">'. $branch_name .' </option>';
+                            }*/
+                    ?>
+                    </select>
+
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option value="default" selected="selected">--- Niveau</option>
+                        <option value= "1">1</option>
+                        <option value= "2">2</option>
+                        <option value= "3">3</option>
+                        
+                    </select>
+
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option value="default" selected="selected">--- Semestre</option>
+                        <?php  
+                    $stql = "SELECT semestre.id_semestre, semestre.semestre_name FROM `semestre`;";
+                            $result = mysqli_query($connexion, $stql);
+                            while ($res = mysqli_fetch_array($result)) {
+                                $semestre_name = $res['semestre_name'];
+                                $id_semestre = $res['id_semestre'];
+                                echo ' <option value= "'.$id_semestre.'">'. $semestre_name .' </option>';
+                            }
+                    ?>
+                    </select>
+
+                    <button type="submit" class="btn btn-outline-success">Filtrer</button>
+                        </form>
+            </div>
             
         <h3 style="width:100%;">Nom de matière</h3>
         
-        <div class="search">
-
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Faculté</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Filière</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Niveau</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                <option selected>Semestre</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-            <button type="button" class="btn btn-outline-success">Filtrer</button>
-
-            </div>
+        
 
         <table class="table">
         <thead>
@@ -162,7 +181,7 @@
 </form>
 
     </main>
-    
+    <script src="prof_layout.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 <?php
