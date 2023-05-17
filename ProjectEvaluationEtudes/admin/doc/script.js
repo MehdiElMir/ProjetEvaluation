@@ -5,7 +5,6 @@ $(document).ready(function () {
   $("#btncheck1").change(function () {
     $(".questioncheck").prop("checked", $(this).prop("checked"));
   });
-  $("#submit-btn").hide();
 
   // Charger les options de la branche en fonction de la faculté sélectionnée
   $("#faculty").change(function () {
@@ -25,16 +24,13 @@ $(document).ready(function () {
           $("#level").prop("disabled", true);
           $("#level").html("<option value=''>Select Branch first</option>");
           $("#subject-checkboxes").html("");
-          $("#submit-btn").hide();
         },
       });
-      $("#submit-btn").prop("disabled", false);
     } else {
       $("#branch").prop("disabled", true);
       $("#level").prop("disabled", true);
       $("#level").html("<option value=''>Select Branch first</option>");
       $("#subject-checkboxes").html("");
-      $("#submit-btn").hide();
     }
   });
 
@@ -57,37 +53,22 @@ $(document).ready(function () {
           $("#submit-btn").hide();
         },
       });
-      $("#submit-btn").prop("disabled", false);
     } else {
       $("#level").prop("disabled", true);
       $("#level").html("<option value=''>Select Branch first</option>");
       $("#subject-checkboxes").html("");
-      $("#submit-btn").hide();
     }
   });
 
   // Charger les options des matières en fonction du niveau et du semestre sélectionnés
   $("#level, #semestre").change(function () {
     var level = $("#level").val();
-    
+
     var semestre = $("#semestre input:checked").val();
-  
 
     console.log(level);
     console.log(semestre);
 
-    if (
-      level &&
-      semestre &&
-      $("#faculty").val() &&
-      $("#branch").val() &&
-      $("input[name='subject[]']:checked").length
-    ) {
-      $("#submit-btn").show();
-      $("#submit-btn").prop("disabled", false);
-    } else {
-      $("#submit-btn").hide();
-    }
     $("#subject-checkboxes").empty();
     $.ajax({
       url: "../doc/Gets/get_subjects.php",
@@ -115,8 +96,6 @@ $(document).ready(function () {
         var selectedSubjects = [];
         $(document).on("change", "input[name='subject']", function () {
           if (this.checked) {
-            $("#submit-btn").prop("disabled", false);
-
             selectedSubjects.push($(this).val());
           } else {
             selectedSubjects.splice(
@@ -125,7 +104,6 @@ $(document).ready(function () {
             );
           }
           console.log(selectedSubjects);
-         
         });
       },
       error: function (xhr, status, error) {
@@ -133,6 +111,4 @@ $(document).ready(function () {
       },
     });
   });
-
-  
 });
