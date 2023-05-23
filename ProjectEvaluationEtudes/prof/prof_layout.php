@@ -145,26 +145,41 @@
             </tr>
         </thead>
         <tbody>
-            <?php
+        <?php
                 $id = $_GET['id'];
-                $sql = "SELECT * FROM `surveyquestion` JOIN question
-                WHERE surveyquestion.subject_id = $id
-                AND question_id = id_question;";
+
+                $sql = "SELECT * FROM surveyquestion
+                        JOIN question ON surveyquestion.question_id = question.id_question
+                        WHERE surveyquestion.subject_id = $id";
+
+                $sqll = "SELECT *, AVG(response.response_note) AS vote
+                        FROM subject
+                        JOIN semestre ON subject.semestre_id = semestre.id_semestre
+                        JOIN survey ON semestre.id_semestre = survey.semestre_id
+                        JOIN surveyquestion ON surveyquestion.subject_id = subject.id_subject
+                        JOIN response ON surveyquestion.question_id = response.survey_question_id
+                        JOIN reponse_note ON reponse_note.id_reponse_note = response.response_note
+                        JOIN question ON question.id_question = surveyquestion.id_survey_question
+                        GROUP BY question.id_question";
 
                 $result = mysqli_query($connexion, $sql);
+                $result2 = mysqli_query($connexion, $sqll);
 
                 $i = 1;
 
-                while ($res = mysqli_fetch_array($result)) {
+                while ($res = mysqli_fetch_array($result2)) {
                     $question_phrase = $res['question_phrase'];
                     $id_question = $res['id_question'];
                     $id_survey_question = $res['id_survey_question'];
+                    $vote = $res['vote'];
+
                     echo '<tr>';
-                    echo '<th scope="row">'.$i.'</th>';
-                    echo '<td>'.$question_phrase.'</td>';
-                    echo '<td>4,5/5</td>';
+                    echo '<th scope="row">' . $i . '</th>';
+                    echo '<td>' . $question_phrase . '</td>';
+                    echo '<td>' . $vote . '</td>';
                     echo '</tr>';
-                    $i = $i + 1;
+
+                    $i++;
                 }
             ?>
 
