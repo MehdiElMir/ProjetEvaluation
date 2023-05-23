@@ -58,7 +58,7 @@
                         $subject_name = $res['subject_name'];
                         echo '<li><a style="color: white; 
                                     text-decoration:none;
-                                    text-align:left;" href="/subject.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
+                                    text-align:left;" href="prof_layout.php?id=' . $id_subject . '">' . $subject_name . '</a></li>';
                     }
                     
                     ?>
@@ -115,7 +115,8 @@
 
                     <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option value="default" selected="selected">--- Semestre</option>
-                        <?php  
+
+                    <?php  
                     $stql = "SELECT semestre.id_semestre, semestre.semestre_name FROM `semestre`;";
                             $result = mysqli_query($connexion, $stql);
                             while ($res = mysqli_fetch_array($result)) {
@@ -124,6 +125,7 @@
                                 echo ' <option value= "'.$id_semestre.'">'. $semestre_name .' </option>';
                             }
                     ?>
+
                     </select>
 
                     <button type="submit" class="btn btn-outline-success">Filtrer</button>
@@ -143,24 +145,29 @@
             </tr>
         </thead>
         <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Question 1 ---------------------------------</td>
-                <td>4,5/5</td>
-            
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Question 2 ---------------------------------</td>
-                <td>3,5/5</td>
-                
-                
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Question 2 ---------------------------------</td>
-                <td>4/5</td>
-                </tr>
+            <?php
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM `surveyquestion` JOIN question
+                WHERE surveyquestion.subject_id = $id
+                AND question_id = id_question;";
+
+                $result = mysqli_query($connexion, $sql);
+
+                $i = 1;
+
+                while ($res = mysqli_fetch_array($result)) {
+                    $question_phrase = $res['question_phrase'];
+                    $id_question = $res['id_question'];
+                    $id_survey_question = $res['id_survey_question'];
+                    echo '<tr>';
+                    echo '<th scope="row">'.$i.'</th>';
+                    echo '<td>'.$question_phrase.'</td>';
+                    echo '<td>4,5/5</td>';
+                    echo '</tr>';
+                    $i = $i + 1;
+                }
+            ?>
+
             </tbody>
             </table>
 
