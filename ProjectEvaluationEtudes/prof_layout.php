@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
-            session_start();
-            //date of today
-            //$dateNow = date("Y-m-d h:i:sa", strtotime("now"));
-            $id_professeur =  $_SESSION["id_professeur"] ;
-            $professor_Lname=  $_SESSION["professor_Lname"] ;
-            extract($_POST);
-            include("./login_process/config.php");
-            
-                
+<?php
+    session_start();
+    //date of today
+    //$dateNow = date("Y-m-d h:i:sa", strtotime("now"));
+    $id_professeur =  $_SESSION["id_professeur"] ;
+    $professor_Lname=  $_SESSION["professor_Lname"] ;
+    extract($_POST);
+    include("./login_process/config.php");             
 ?>
     
     <meta charset="UTF-8">
@@ -71,11 +69,6 @@
             </div>
            
         </div>
-        
-
-       <!---------------------------------Session HELLO ---------------------------------------- -->
-      
-    
 
         <div class="main-content">
             
@@ -167,18 +160,9 @@
 </body>
 <?php
 
-
-
-
 if(isset($_POST['boutton-commentaire'])) {
     header("Location: ./liste_commentaires.php");
     exit();
 }
-
-
-
-
-
-
 ?>
 </html>
