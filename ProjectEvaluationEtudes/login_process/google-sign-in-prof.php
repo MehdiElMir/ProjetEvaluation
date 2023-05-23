@@ -3,10 +3,10 @@
     session_start();
     
     // Connexion à la base de données
-   include 'login_process/config.php';
+   include 'config.php';
 
     // include google API client
-    require_once "vendor/autoload.php";
+    require_once "../vendor/autoload.php";
      
     // set google client ID
     $google_oauth_client_id = "507631210326-ov9ided7se74vecolnro3857l1j1nhrm.apps.googleusercontent.com";

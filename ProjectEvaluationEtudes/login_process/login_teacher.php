@@ -28,7 +28,7 @@
     $_SESSION["id_professeur"] = $row['id_professeur'];
     $_SESSION["professor_Lname"]=$row['professor_Lname'];
     // Redirection vers la page d'accueil 
-    header('Location: ../prof_layout.php');
+    header('Location: ../prof/prof_layout.php');
 }
    else {
        // pas de résultat

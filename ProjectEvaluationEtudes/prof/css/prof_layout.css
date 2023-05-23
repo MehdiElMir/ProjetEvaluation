@@ -64,16 +64,28 @@ ul > li:hover, .edit:hover{
     flex-wrap: wrap;
 }
 
-.search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 
-.search > select{
+
+.search > form > select{
     margin-right: 10px;
     width: 200px;
 }
+
+.search > form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
+  select {
+    width: 100%;
+    max-width: 200px;
+  }
+  
 
 .cards, .cards--plus{
     border-radius: 20px;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 15 avr. 2023 à 14:03
--- Version du serveur : 10.4.25-MariaDB
--- Version de PHP : 8.1.10
+-- Généré le : mer. 17 mai 2023 à 10:43
+-- Version du serveur : 10.4.28-MariaDB
+-- Version de PHP : 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,7 @@ CREATE TABLE `action` (
   `professeur_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `survey_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `action`
@@ -56,14 +56,15 @@ CREATE TABLE `admin` (
   `admin_Lname` varchar(255) NOT NULL,
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `admin_Fname`, `admin_Lname`, `admin_email`, `admin_password`) VALUES
-(1, 'Samar', 'MOUCHAWRAB', 's.mouchawrab@mundiapolis.ma', '0000');
+(1, 'Samar', 'MOUCHAWRAB', 's.mouchawrab@mundiapolis.ma', '0000'),
+(2, 'Nouhaila', 'Danouni', 'n.danouni@mundiapolis.ma', '1234');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ CREATE TABLE `branch` (
   `branch_code` varchar(9) NOT NULL,
   `levels_nbr` int(11) NOT NULL,
   `faculty_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `branch`
@@ -125,7 +126,7 @@ CREATE TABLE `class` (
   `id_class` int(11) NOT NULL,
   `class_name` varchar(255) NOT NULL,
   `level_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `class`
@@ -148,7 +149,7 @@ INSERT INTO `class` (`id_class`, `class_name`, `level_id`) VALUES
 CREATE TABLE `faculty` (
   `id_faculty` int(11) NOT NULL,
   `faculty_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `faculty`
@@ -171,7 +172,7 @@ CREATE TABLE `level` (
   `level_number` int(11) NOT NULL,
   `level_name` varchar(255) NOT NULL,
   `branch_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `level`
@@ -286,7 +287,7 @@ CREATE TABLE `professeur` (
   `professor_Lname` varchar(255) NOT NULL,
   `professor_email` varchar(255) NOT NULL,
   `professor_password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `professeur`
@@ -311,7 +312,7 @@ INSERT INTO `professeur` (`id_professeur`, `professor_Fname`, `professor_Lname`,
 CREATE TABLE `question` (
   `id_question` int(11) NOT NULL,
   `question_phrase` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `question`
@@ -322,7 +323,207 @@ INSERT INTO `question` (`id_question`, `question_phrase`) VALUES
 (2, 'Le cours donne une place importante aux exercices, études de cas et applications pratiques'),
 (3, 'Le cours s’appuie sur des lectures et ressources complémentaires à préparer à domicile'),
 (4, 'Le cours a été animé d’une manière pédagogique, claire et structurée'),
-(5, 'Le cours constitue une valeur ajoutée dans mon parcours d’étudiant');
+(5, 'Le cours constitue une valeur ajoutée dans mon parcours d’étudiant'),
+(8, ''),
+(9, ''),
+(10, ''),
+(11, ''),
+(12, ''),
+(13, ''),
+(14, ''),
+(15, ''),
+(16, ''),
+(17, ''),
+(18, ''),
+(19, ''),
+(20, ''),
+(21, ''),
+(22, ''),
+(23, ''),
+(24, ''),
+(25, ''),
+(26, ''),
+(27, ''),
+(28, ''),
+(29, ''),
+(30, ''),
+(31, ''),
+(32, ''),
+(33, ''),
+(34, ''),
+(35, ''),
+(36, ''),
+(37, ''),
+(38, ''),
+(39, ''),
+(40, ''),
+(41, ''),
+(42, ''),
+(43, ''),
+(44, ''),
+(45, ''),
+(46, ''),
+(47, ''),
+(48, ''),
+(49, ''),
+(50, ''),
+(51, ''),
+(52, ''),
+(53, ''),
+(54, ''),
+(55, ''),
+(56, ''),
+(57, ''),
+(58, ''),
+(59, ''),
+(60, ''),
+(61, ''),
+(62, ''),
+(63, ''),
+(64, ''),
+(65, ''),
+(66, ''),
+(67, ''),
+(68, ''),
+(69, ''),
+(70, ''),
+(71, ''),
+(72, ''),
+(73, ''),
+(74, ''),
+(75, ''),
+(76, ''),
+(77, ''),
+(78, ''),
+(79, ''),
+(80, ''),
+(81, ''),
+(82, ''),
+(83, ''),
+(84, ''),
+(85, ''),
+(86, ''),
+(87, ''),
+(88, ''),
+(89, ''),
+(90, ''),
+(91, ''),
+(92, ''),
+(93, ''),
+(94, ''),
+(95, ''),
+(96, ''),
+(97, ''),
+(98, ''),
+(99, ''),
+(100, ''),
+(101, ''),
+(102, ''),
+(103, ''),
+(104, ''),
+(105, ''),
+(106, ''),
+(107, ''),
+(108, ''),
+(109, ''),
+(110, ''),
+(111, ''),
+(112, ''),
+(113, ''),
+(114, ''),
+(115, ''),
+(116, ''),
+(117, ''),
+(118, ''),
+(119, ''),
+(120, ''),
+(121, ''),
+(122, ''),
+(123, ''),
+(124, ''),
+(125, ''),
+(126, ''),
+(127, ''),
+(128, ''),
+(129, ''),
+(130, ''),
+(131, ''),
+(132, ''),
+(133, ''),
+(134, ''),
+(135, ''),
+(136, ''),
+(137, ''),
+(138, ''),
+(139, ''),
+(140, ''),
+(141, ''),
+(142, ''),
+(143, ''),
+(144, ''),
+(145, ''),
+(146, ''),
+(147, ''),
+(148, ''),
+(149, ''),
+(150, ''),
+(151, ''),
+(152, ''),
+(153, ''),
+(154, ''),
+(155, ''),
+(156, ''),
+(157, ''),
+(158, ''),
+(159, ''),
+(160, ''),
+(161, ''),
+(162, ''),
+(163, ''),
+(164, ''),
+(165, ''),
+(166, ''),
+(167, ''),
+(168, ''),
+(169, ''),
+(170, ''),
+(171, ''),
+(172, ''),
+(173, ''),
+(174, ''),
+(175, ''),
+(176, ''),
+(177, ''),
+(178, ''),
+(179, ''),
+(180, ''),
+(181, ''),
+(182, ''),
+(183, ''),
+(184, ''),
+(185, ''),
+(186, ''),
+(187, ''),
+(188, ''),
+(189, ''),
+(190, ''),
+(191, ''),
+(192, ''),
+(193, ''),
+(194, ''),
+(195, ''),
+(196, ''),
+(197, ''),
+(198, ''),
+(199, ''),
+(200, ''),
+(201, ''),
+(202, ''),
+(203, ''),
+(204, ''),
+(205, ''),
+(206, ''),
+(207, '');
 
 -- --------------------------------------------------------
 
@@ -333,7 +534,7 @@ INSERT INTO `question` (`id_question`, `question_phrase`) VALUES
 CREATE TABLE `reponse_note` (
   `id_reponse_note` int(11) NOT NULL,
   `reponse_note` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `reponse_note`
@@ -359,7 +560,7 @@ CREATE TABLE `response` (
   `response_note` int(11) DEFAULT NULL,
   `comment` text DEFAULT NULL,
   `responsed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `response`
@@ -386,7 +587,7 @@ INSERT INTO `response` (`id_response`, `student_id`, `survey_question_id`, `resp
 CREATE TABLE `semestre` (
   `id_semestre` int(11) NOT NULL,
   `semestre_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `semestre`
@@ -409,7 +610,7 @@ CREATE TABLE `student` (
   `student_email` varchar(255) NOT NULL,
   `student_password` int(11) NOT NULL,
   `class_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `student`
@@ -442,20 +643,20 @@ CREATE TABLE `subject` (
   `level_id` int(11) NOT NULL,
   `semestre_id` int(11) NOT NULL,
   `subject_year` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `subject`
 --
 
 INSERT INTO `subject` (`id_subject`, `subject_name`, `professeur_id`, `level_id`, `semestre_id`, `subject_year`) VALUES
-(1, 'Administration des réseau et des systèmes', 4, 46, 2, 2023),
-(2, 'Développement mobile', 8, 46, 2, 2023),
-(3, 'Sécurité logicielle et du réseau', 5, 46, 2, 2023),
-(4, 'Systèmes distribués et systèmes temps réel', 7, 46, 2, 2023),
-(5, 'Développement avec python', 2, 46, 2, 2023),
-(6, 'Génie logiciel', 1, 46, 2, 2023),
-(7, 'Anglais 2', 6, 46, 2, 2023);
+(1, 'Administration des réseau et des systèmes', 4, 46, 2, '2023'),
+(2, 'Développement mobile', 8, 46, 2, '2023'),
+(3, 'Sécurité logicielle et du réseau', 5, 46, 2, '2023'),
+(4, 'Systèmes distribués et systèmes temps réel', 7, 46, 2, '2023'),
+(5, 'Développement avec python', 2, 46, 2, '2023'),
+(6, 'Génie logiciel', 1, 46, 2, '2023'),
+(7, 'Anglais 2', 6, 46, 2, '2023');
 
 -- --------------------------------------------------------
 
@@ -471,15 +672,16 @@ CREATE TABLE `survey` (
   `survey_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `survey_statut` varchar(50) NOT NULL DEFAULT 'Prête',
   `Report` mediumblob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `survey`
 --
 
 INSERT INTO `survey` (`id_survey`, `survey_name`, `level_id`, `semestre_id`, `survey_created_at`, `survey_statut`, `Report`) VALUES
-(1, 'survey1', 46, 2, '2023-04-15 12:30:00', 'Prête', ''),
-(2, 'survey2', 51, 2, '2023-04-19 15:00:00', 'Prête', '');
+(1, 'survey1', 46, 2, '2023-04-15 12:30:00', 'En cours', ''),
+(2, 'survey2', 51, 2, '2023-04-19 15:00:00', 'Finit', ''),
+(3, 'survey3', 6, 2, '2023-05-12 12:00:00', 'Finit', '');
 
 -- --------------------------------------------------------
 
@@ -492,7 +694,7 @@ CREATE TABLE `surveyquestion` (
   `survey_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   `subject_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `surveyquestion`
@@ -641,7 +843,7 @@ ALTER TABLE `action`
 -- AUTO_INCREMENT pour la table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `branch`
@@ -677,7 +879,7 @@ ALTER TABLE `professeur`
 -- AUTO_INCREMENT pour la table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT pour la table `reponse_note`
@@ -713,7 +915,7 @@ ALTER TABLE `subject`
 -- AUTO_INCREMENT pour la table `survey`
 --
 ALTER TABLE `survey`
-  MODIFY `id_survey` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_survey` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `surveyquestion`
