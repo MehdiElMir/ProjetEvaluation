@@ -141,7 +141,7 @@
             <tr>
             <th scope="col-2"> </th>
             <th scope="col-6">Questions </th>
-            <th scope="col-4">Résultats</th>
+
             </tr>
         </thead>
         <tbody>
@@ -152,30 +152,55 @@
                         JOIN question ON surveyquestion.question_id = question.id_question
                         WHERE surveyquestion.subject_id = $id";
 
-                $sqll = "SELECT *, AVG(response.response_note) AS vote
-                        FROM subject
-                        JOIN semestre ON subject.semestre_id = semestre.id_semestre
-                        JOIN survey ON semestre.id_semestre = survey.semestre_id
-                        JOIN surveyquestion ON surveyquestion.subject_id = subject.id_subject
-                        JOIN response ON surveyquestion.question_id = response.survey_question_id
-                        JOIN reponse_note ON reponse_note.id_reponse_note = response.response_note
-                        JOIN question ON question.id_question = surveyquestion.id_survey_question
-                        GROUP BY question.id_question";
+                $sqll = "SELECT surveyquestion.subject_id,surveyquestion.question_id, surveyquestion.subject_id,AVG(response.response_note) As vote
+                FROM response 
+                JOIN surveyquestion ON surveyquestion.id_survey_question = response.survey_question_id
+                JOIN survey ON surveyquestion.survey_id = survey.id_survey
+                JOIN subject ON subject.id_subject = surveyquestion.subject_id
+                WHERE survey.survey_statut LIKE 'Prête'
+                and surveyquestion.subject_id=$id
+                GROUP BY surveyquestion.id_survey_question; ";
 
                 $result = mysqli_query($connexion, $sql);
                 $result2 = mysqli_query($connexion, $sqll);
 
                 $i = 1;
 
-                while ($res = mysqli_fetch_array($result2)) {
+                while ($res = mysqli_fetch_array($result)) {
                     $question_phrase = $res['question_phrase'];
                     $id_question = $res['id_question'];
                     $id_survey_question = $res['id_survey_question'];
-                    $vote = $res['vote'];
+                    // $vote = $res['vote'];
 
                     echo '<tr>';
                     echo '<th scope="row">' . $i . '</th>';
                     echo '<td>' . $question_phrase . '</td>';
+                    // echo '<td>' . $vote . '</td>';
+                    echo '</tr>';
+
+                    $i++;
+                }?>
+                
+                
+              
+                      <thead>
+                      <tr>
+                      <th scope="col-2"> </th>
+                  
+                      <th scope="col-4">Résultats</th>
+                      </tr>
+                  </thead>
+                  <?php
+                while ($res = mysqli_fetch_array($result2)) {
+                    // $question_phrase = $res['question_phrase'];
+                    // $id_question = $res['id_question'];
+                    // $id_survey_question = $res['id_survey_question'];
+                    $vote = $res['vote'];
+                    $i = 1;
+
+                    echo '<tr>';
+                    echo '<th scope="row">' . $i . '</th>';
+                    // echo '<td>' . $question_phrase . '</td>';
                     echo '<td>' . $vote . '</td>';
                     echo '</tr>';
 
