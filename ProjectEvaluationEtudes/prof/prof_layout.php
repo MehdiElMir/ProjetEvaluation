@@ -3,12 +3,11 @@
 <head>
     <?php
             session_start();
-            //date of today
-            //$dateNow = date("Y-m-d h:i:sa", strtotime("now"));
             $id_professeur =  $_SESSION["id_professeur"] ;
             $professor_Lname=  $_SESSION["professor_Lname"] ;
             extract($_POST);
-            include("../login_process/config.php");      
+            include("../login_process/config.php");  
+            $dateNow = date("Y-m-d h:i:sa", strtotime("now"));    
 ?>
     
     <meta charset="UTF-8">
@@ -82,8 +81,8 @@
                     <select class="form-select form-select-sm" id="faculty">
                         <option value="default" selected="selected">--- Facultés</option>
                     <?php  
-                    $stql = "SELECT faculty.id_faculty, faculty.faculty_name FROM faculty;";
-                            $result = mysqli_query($connexion, $stql);
+                    $sttql = "SELECT faculty.id_faculty, faculty.faculty_name FROM faculty;";
+                            $result = mysqli_query($connexion, $sttql);
                             while ($res = mysqli_fetch_array($result)) {
                                 $faculty_name = $res['faculty_name'];
                                 $id_faculty = $res['id_faculty'];
@@ -126,11 +125,10 @@
                             }
                     ?>
 
-                    </select>
+                    </select>       
+            </form>
 
-                    <button type="submit" class="btn btn-outline-success">Filtrer</button>
-                        </form>
-            </div>
+           
             
         <h3 style="width:100%;">Nom de matière</h3>
         
@@ -152,7 +150,7 @@
                         JOIN question ON surveyquestion.question_id = question.id_question
                         WHERE surveyquestion.subject_id = $id";
 
-                $sqll = "SELECT surveyquestion.subject_id,surveyquestion.question_id, surveyquestion.subject_id,AVG(response.response_note) As vote
+                $sqll = "SELECT survey.id_survey, surveyquestion.subject_id,surveyquestion.question_id, surveyquestion.subject_id,AVG(response.response_note) As vote
                 FROM response 
                 JOIN surveyquestion ON surveyquestion.id_survey_question = response.survey_question_id
                 JOIN survey ON surveyquestion.survey_id = survey.id_survey
@@ -160,7 +158,7 @@
                 WHERE survey.survey_statut LIKE 'Prête'
                 and surveyquestion.subject_id=$id
                 GROUP BY surveyquestion.id_survey_question; ";
-
+               
                 $result = mysqli_query($connexion, $sql);
                 $result2 = mysqli_query($connexion, $sqll);
 
@@ -170,8 +168,8 @@
                     $question_phrase = $res['question_phrase'];
                     $id_question = $res['id_question'];
                     $id_survey_question = $res['id_survey_question'];
+                
                     // $vote = $res['vote'];
-
                     echo '<tr>';
                     echo '<th scope="row">' . $i . '</th>';
                     echo '<td>' . $question_phrase . '</td>';
@@ -194,8 +192,11 @@
                 while ($res = mysqli_fetch_array($result2)) {
                     // $question_phrase = $res['question_phrase'];
                     // $id_question = $res['id_question'];
-                    // $id_survey_question = $res['id_survey_question'];
+                    // $id_survey_question = $res['id_survey_question'];    
+                   
                     $vote = $res['vote'];
+                    $id_survey=$res['id_survey'];
+
                     $i = 1;
 
                     echo '<tr>';
@@ -211,40 +212,44 @@
             </tbody>
             </table>
 
+            <form action="liste_commentaires.php" method="post">
+            <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden>
+            <button type="submit" style="margin-top:5px;" name="boutton-commentaire" class="btn btn-secondary" 
+            onclick="window.location.href='liste_commentaires.php'">Afficher les commentaires</button>
+            
+        </form>
+            </div>
+        
+            <
 
+           
+       
+                <!-- objet action  = = action name -->
+     
+    <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
+              <div class="mb-3"  style=" width:800px; margin-top :20px; ">
+                <label  for="exampleFormControlTextarea1" class="form-label">objet action:</label>
+                <textarea class="form-control form-control-lg" name="action_name" id="action_name" rows="3"></textarea>
+            </div>
 
-            <form method="post">
-            <button type="submit" style="margin-top:5px;" name="boutton-commentaire"class="btn btn-secondary">Afficher les commentaires</button>
+            <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
 
+                <!-- == action a saisir== -->
             <div class="mb-3" style="width:800px; margin-top :20px;">
                 <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
-                <textarea class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
             </div>
 
             <div style="margin-top:20px;">
-            <button type="submit" class="btn btn-success">Ajouter une action</button>
+            <button type="submit" class="btn btn-success" >Ajouter une action</button>
+            
             </div>
 
-</form>
+        </form>
 
     </main>
     <script src="prof_layout.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
-<?php
 
-
-
-
-if(isset($_POST['boutton-commentaire'])) {
-    header("Location: ./liste_commentaires.php");
-    exit();
-}
-
-
-
-
-
-
-?>
 </html>
