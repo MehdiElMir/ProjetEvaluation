@@ -5,3 +5,8 @@
 .sub-module{
     width: 22%;
 }
+
+.cards-container {
+    display: flex;
+    gap: 2rem;
+}

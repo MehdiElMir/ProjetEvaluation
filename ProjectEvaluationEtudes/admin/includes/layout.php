@@ -14,7 +14,7 @@
 <body>
 <?php include '../doc/Layout/body.php'; ?>
     <header>
-        <nav class="p-3 shadow-lg">
+        <nav class="p-3 shadow-lg navbar">
             <a href="/">
                 <img src="../assets/logo.png" alt="logo mundiapolis" class="img-size">
             </a>
@@ -26,12 +26,12 @@
     <main class="main">
         <div class="sidebar">
             <div class="sidebar-top">
-                <ul>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Enseignants</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/filiers.php">Les Filères</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
-                    <li><a href="/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
+                <ul class="sidebar-list">
+                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
+                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Enseignants</a></li>
+                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/filiers.php">Les Filères</a></li>
+                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
+                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
                 </ul>
             </div>
             <p class="edit">Edit</p>

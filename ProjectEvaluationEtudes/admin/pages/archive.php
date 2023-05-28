@@ -13,10 +13,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Check if the "filtrer" button is clicked
-if (isset($_POST["filtrer"])) {
-    filtrerSurvey($conn);
-} 
 
 $option = '';
 $sql1 = 'SELECT * FROM branch';
@@ -33,11 +29,11 @@ if ($res && mysqli_num_rows($res) > 0) {
     <h1 class="mb-5">Archives des Enquêtes</h1>
     <form action="" method="POST">
         <div class="archive archive-filters d-flex gap-2 mb-5">
-            <select name=" filieres" class="flex-grow-1 bg-transparent border border-black rounded-3 px-4">
-                <option selected disabled>Choose...</option>
+            <select name=" filieres" class="flex-grow-1 bg-transparent border border-black rounded-3 px-4" required>
+                <option selected>Choose...</option>
                 <?php echo $option; ?>
             </select>
-            <select name="annee_universitaire" id="" class="flex-grow-1 bg-transparent border border-black rounded-3 px-4">
+            <select name="annee_universitaire" id="" class="flex-grow-1 bg-transparent border border-black rounded-3 px-4" required>
 <option value="annee_universitaire">annee universitaire</option>
 <?php
 // Durée de l'année universitaire (par exemple, 4 ans)
@@ -50,13 +46,17 @@ $duration = 25;
             }
             ?>
         </select>
-        <button name="filtrer" type="submit" class="btn btn-secondary">Filtrer</button>
+        <button name="filtrer" type="submit" class="btn btn-secondary" >Filtrer</button>
+        
     </div>
 </form>
 
 <h1 class="mb-3">Enquêtes</h1>
 
 <?php
+if (isset($_POST["filtrer"])) {
+    filtrerSurvey($conn);
+} 
 
 if (!isset($_POST["filtrer"])) {
     $sql = "SELECT *,branch.branch_name FROM survey 
@@ -93,8 +93,9 @@ if (!isset($_POST["filtrer"])) {
 
     function filtrerSurvey($conn) {
         
-        if (isset($_POST["filtrer"])) {
+        if (isset($_POST["filtrer"]) && strlen($_POST["annee_universitaire"]) != 19) {
             $arr = explode("-", $_POST["annee_universitaire"]);
+            // echo strlen($_POST["annee_universitaire"]);
             $start_year = $arr[0] . "-09-01";
             $end_year = $arr[1] . "-07-30";
             $num_br = $_POST["filieres"] ?? '';
@@ -110,7 +111,6 @@ if (!isset($_POST["filtrer"])) {
             $result2 = mysqli_query($conn, $query);
     
             if ($result2) {
-                echo "<div class='main-content'>";
                 echo "<div class='card-container d-flex gap-4 flex-wrap'>";
                 if (mysqli_num_rows($result2) > 0) {
                     // output data of each row
@@ -133,8 +133,11 @@ if (!isset($_POST["filtrer"])) {
                 } else {
                     echo "<p>Aucune enquête trouvée.</p>";
                 }
-                echo "</div>";
             }
+        } else {
+            ?>
+                <p>aucune enquete disponible</p>
+            <?php
         }
     }
     
