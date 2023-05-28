@@ -1,7 +1,7 @@
 <?php include "../includes/layout.php" ?>
 
 <div class="main-content d-flex flex-column ">
-    <form action="">
+    <form action="submit.php" method="post" >
         <h1>Ajouter Une Enquete</h1>
 
         <div class="enquetes d-flex flex-column gap-4 mb-5">
@@ -77,15 +77,15 @@
                 <?php foreach ($question as $question) : ?>
                     <div id="question d-flex align-items-center gap-2">
 
-                        <input class="questioncheck" type="checkbox" name="quetions" id="<?= $question['id_question'] ?>">
-                        <label for="quetion"><?= $question['question_phrase'] ?></label>
+                        <input class="questioncheck" type="checkbox" name="questions[]" value="<?= $question['id_question'] ?>">
+                        <label for="question"><?= $question['question_phrase'] ?></label>
 
 
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
-
+                </br>
         <div class="lancer lancer-enquete d-flex justify-content-end">
             <button type="submit" class="btn btn-success">Lancer</button>
         </div>
