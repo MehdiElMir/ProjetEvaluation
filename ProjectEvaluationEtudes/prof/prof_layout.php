@@ -75,7 +75,7 @@
 
         <div class="main-content">
 
-        <div class="search">
+        <div class="search" style="height:100px;">
                 <form action="aside.php" style="display: flex;flex-direction: row;align-items: center;">
                     <select class="form-select form-select-sm" id="faculty">
                         <option value="default" selected="selected">--- Facultés</option>
@@ -129,15 +129,16 @@
 
            
             
-        <h3 style="width:100%;">Nom de matière</h3>
+        <h3 style="width:100%; margin-top:40px">Nom de matière :</h3>
         
-        
+        <div class="row" style="margin-top: 30px">
 
-        <table class="table">
+        <div class="col-10" >
+            <table class="table">
         <thead>
             <tr>
-            <th scope="col-2"> </th>
-            <th scope="col-6">Questions </th>
+            <th scope="col-2" class="table-primary"></th>
+            <th scope="col-6" class="table-primary">Questions </th>
 
             </tr>
         </thead>
@@ -173,22 +174,24 @@
                     $id_survey_question = $res['id_survey_question'];
                 
                     // $vote = $res['vote'];
-                    echo '<tr>';
+                    echo '<tr class="table-secondary">';
                     echo '<th scope="row">' . $i . '</th>';
                     echo '<td>' . $question_phrase . '</td>';
                     // echo '<td>' . $vote . '</td>';
                     echo '</tr>';
 
                     $i++;
-                }?>
-                
-                
-              
+                }
+                ?>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="col-2">
+            <table class="table">
                       <thead>
                       <tr>
-                      <th scope="col-2"> </th>
-                  
-                      <th scope="col-4">Résultats</th>
+                      <th scope="col-4" >Résultats</th>
                       </tr>
                   </thead>
                   // requete d'affichage de vote
@@ -203,8 +206,8 @@
 
                     $i = 1;
 
-                    echo '<tr>';
-                    echo '<th scope="row">' . $i . '</th>';
+                    echo '<tr class="table-secondary">';
+
                     // echo '<td>' . $question_phrase . '</td>';
                     echo '<td>' . $vote . '</td>';
                     echo '</tr>';
@@ -212,45 +215,63 @@
                     $i++;
                 }
             ?>
-
             </tbody>
             </table>
+            </div>
 
-            <form action="liste_commentaires.php" method="post">
+        </div>
+
+        <div class="row align-items-start">
+        <form action="liste_commentaires.php" method="post">
             <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden>
             <button type="submit" style="margin-top:5px;" name="boutton-commentaire" class="btn btn-secondary" 
             onclick="window.location.href='liste_commentaires.php'">Afficher les commentaires</button>
             
         </form>
-            </div>
+        </div>
+
+        <hr>
+
         
-            <
+                
+                
+              
+
+            
+            
+        
+            <div class="row">
+                <div class="col-12">
+                <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
+                <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Objet de l'action :</span>
+                        <input type="text" class="form-control" name="action_name" id="action_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
+
+                <!-- == action a saisir== -->
+                    <div class="mb-3" >
+                        
+                        <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
+                    </div>
+
+            <div style="margin-top:5px;">
+            <button type="submit" class="btn btn-success" style="float:right;">Ajouter une action</button>
+            
+            </div>
+
+        </form>
+                </div>
+            </div>
+            
 
            
        
-                <!-- action  -->
+                <!-- objet action  = = action name -->
      
-        <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
-                <div class="mb-3"  style=" width:800px; margin-top :20px; ">
-                    <label  for="exampleFormControlTextarea1" class="form-label">titre de l'action:</label>
-                    <textarea class="form-control form-control-lg" name="action_name" id="action_name" rows="3"></textarea>
-                </div>
-                <!-- RECUPERETION DE L'ID DU SUBJECT -->
-                <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
-
-                    <!-- == action a saisir== -->
-
-                <div class="mb-3" style="width:800px; margin-top :20px;">
-                    <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
-                    <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
-                </div>
-
-                <div style="margin-top:20px;">
-                <button type="submit" class="btn btn-success" >Ajouter une action</button>
-                
-                </div>
-
-            </form>
+    
 
     </main>
     <script src="prof_layout.js" ></script>
