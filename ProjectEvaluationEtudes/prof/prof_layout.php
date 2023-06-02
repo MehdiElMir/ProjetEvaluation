@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>    
+    <!-- Recuperation de session et connexion avec la base de donnees  -->
     <?php
             session_start();
             $id_professeur =  $_SESSION["id_professeur"] ;
@@ -8,7 +9,7 @@
             extract($_POST);
             include("../login_process/config.php");  
             $dateNow = date("Y-m-d h:i:sa", strtotime("now"));    
-?>
+    ?>
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,21 +21,19 @@
 
 </head>
 <body>
-
-
     <header>
         
         <nav class="p-3 shadow-lg">
             <a href="/">
                 <img src="./assets/logo.png" alt="logo mundiapolis" class="img-size">
             </a>
-            
         </nav>
-        
+
     </header>
 
 
     <!-- MAIN CONTENT -->
+    <!--AFFICHAGE DES MATIERES DANS LE SIDE BAR  -->
     <main class="main">
         
         <div class="sidebar" style="text-align:left;">
@@ -42,8 +41,8 @@
                 <p style="color:white;font-size:30px;margin-top:20px;margin-left:5px;font-weight:bold;">Matières</p>
 
                 <ul style="text-align: left;">
-                    <?php
-                    
+
+                    <?php                    
                     $stql = "SELECT `subject_name`,`subject`.`id_subject`
                     FROM `subject`, `professeur`
                     WHERE `professeur`.`id_professeur` = $id_professeur and
@@ -70,9 +69,9 @@
         </div>
         
 
-       <!---------------------------------Session HELLO ---------------------------------------- -->
+       
       
-    
+    <!-- FILTER -->
 
         <div class="main-content">
 
@@ -144,7 +143,11 @@
         </thead>
         <tbody>
         <?php
+                // recuperation de l'id du subject de L'url
                 $id = $_GET['id'];
+              
+                
+                // requete d'affichage de question
 
                 $sql = "SELECT * FROM surveyquestion
                         JOIN question ON surveyquestion.question_id = question.id_question
@@ -188,6 +191,7 @@
                       <th scope="col-4">Résultats</th>
                       </tr>
                   </thead>
+                  // requete d'affichage de vote
                   <?php
                 while ($res = mysqli_fetch_array($result2)) {
                     // $question_phrase = $res['question_phrase'];
@@ -224,28 +228,29 @@
 
            
        
-                <!-- objet action  = = action name -->
+                <!-- action  -->
      
-    <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
-              <div class="mb-3"  style=" width:800px; margin-top :20px; ">
-                <label  for="exampleFormControlTextarea1" class="form-label">objet action:</label>
-                <textarea class="form-control form-control-lg" name="action_name" id="action_name" rows="3"></textarea>
-            </div>
+        <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
+                <div class="mb-3"  style=" width:800px; margin-top :20px; ">
+                    <label  for="exampleFormControlTextarea1" class="form-label">titre de l'action:</label>
+                    <textarea class="form-control form-control-lg" name="action_name" id="action_name" rows="3"></textarea>
+                </div>
+                <!-- RECUPERETION DE L'ID DU SUBJECT -->
+                <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
 
-            <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
+                    <!-- == action a saisir== -->
 
-                <!-- == action a saisir== -->
-            <div class="mb-3" style="width:800px; margin-top :20px;">
-                <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
-                <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
-            </div>
+                <div class="mb-3" style="width:800px; margin-top :20px;">
+                    <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
+                    <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
+                </div>
 
-            <div style="margin-top:20px;">
-            <button type="submit" class="btn btn-success" >Ajouter une action</button>
-            
-            </div>
+                <div style="margin-top:20px;">
+                <button type="submit" class="btn btn-success" >Ajouter une action</button>
+                
+                </div>
 
-        </form>
+            </form>
 
     </main>
     <script src="prof_layout.js" ></script>
