@@ -1,7 +1,7 @@
 <?php include "../includes/layout.php" ?>
 
 <div class="main-content d-flex flex-column ">
-    <form action="">
+<form action="" method="post" >
         <h1>Ajouter Une Enquete</h1>
 
         <div class="enquetes d-flex flex-column gap-4 mb-5">
