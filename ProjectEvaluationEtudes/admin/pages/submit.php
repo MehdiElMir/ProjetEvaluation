@@ -2,7 +2,7 @@
 include '../doc/Survey.php';
 include '../doc/Surveyquestion.php';
 $survey= new Survey();
-$surveyquestion= new Surveyquestion();
+
 
 // Vérifier si le formulaire a été soumis
 $faculty = $_POST['faculty'];
@@ -39,22 +39,18 @@ $survey->Report ="Report";
 
  
 
- $surveyquestion->survey_id = $survey->id_survey;
+ if (isset($_POST['questions']) && is_array($_POST['questions'])) {
+    foreach ($subjects as $subject) {
+        foreach ($questions as $question) {
 
-// Insérer les sujets
-if (isset($_POST['subject']) && is_array($_POST['subject'])) {
-    foreach ($_POST['subject'] as $subject_id) {
-        $surveyquestion->subject_id = $subject_id;
-        foreach ($_POST['questions'] as $question_id) {
-            $surveyquestion->question_id = $question_id;
+            $surveyquestion = new Surveyquestion();
+            $surveyquestion->survey_id = $survey->id_survey;
+
+            $surveyquestion->subject_id = $subject;
+            $surveyquestion->question_id = $question;
             $surveyquestion->save();
-        
-        
         }
     }
-    
-    
-    
 }
 
 header("Location: /ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enquetes.php");

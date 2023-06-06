@@ -85,7 +85,7 @@ document.getElementById("show-questions-btn").addEventListener("click", function
             }
         }
     };
-    xhr.open("GET", "Gets/get_questions.php?module=" + encodeURIComponent(selectedModule)+ "&surveyId=" + encodeURIComponent(surveyId), true);
+    xhr.open("GET", "get_questions.php?module=" + encodeURIComponent(selectedModule)+ "&surveyId=" + encodeURIComponent(surveyId), true);
     xhr.send();
 });
 
@@ -93,7 +93,7 @@ function displayQuestions(questions) {
     var questionsContainer = document.getElementById("questions-container");
     questionsContainer.innerHTML = "";
     questions.forEach(function(question) {
-        var questionElement = document.createElement("h3");
+        var questionElement = document.createElement("h6");
         questionElement.textContent = question.question_phrase + "?";
         questionsContainer.appendChild(questionElement);
 
