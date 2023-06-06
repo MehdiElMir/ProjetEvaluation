@@ -7,7 +7,7 @@ const ctx = document.getElementById('myChart');
       labels: ["pas du tout d'accord", "pas d'accord", "Moyennement d'accord", "d'accord", "entierement d'accord"],
       datasets: [{
         label: 'statistiques questionnaire',
-        data: [12, 19, 3, 5, 2],
+        data: [0, 0, 0, 0, 0],
         borderWidth: 1
       }]
     },

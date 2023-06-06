@@ -9,4 +9,18 @@
 .cards-container {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.links{
+    text-decoration: none !important;
+    color: #000 !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.progress-bar-ready{
+    width: 0 !important;
 }

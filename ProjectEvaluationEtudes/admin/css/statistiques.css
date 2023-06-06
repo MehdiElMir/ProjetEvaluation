@@ -4,8 +4,8 @@
 }
 
 .commentaires{
-    max-height: 200px;
-    overflow: scroll;
+    max-height: 300px;
+    overflow-y: scroll;
 }
 
 .table-prof{
@@ -16,4 +16,9 @@
 .table-prof > thead {
     background-color: black;
     color: white;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
 }

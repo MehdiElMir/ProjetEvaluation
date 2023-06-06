@@ -19,7 +19,7 @@
        $_SESSION["id_admin"] = $row['id_admin'];
        $_SESSION["admin_Lname"]=$row['admin_Lname'];
        // Redirection vers la page d'accueil 
-       header('Location: ../layout.php');
+       header('Location: ../admin/pages/enquetes.php');
    } else {
 
        // pas de résultat

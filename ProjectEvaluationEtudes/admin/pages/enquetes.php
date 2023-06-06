@@ -27,7 +27,7 @@ if (!$conn) {
 
 <?php
 
-$sql = "SELECT *,branch.branch_name FROM survey JOIN level ON level.id_level=survey.level_id JOIN branch ON branch.id_branch=level.branch_id JOIN semestre ON semestre.id_semestre=survey.semestre_id"; 
+$sql = "SELECT * , branch.branch_name FROM survey JOIN level ON level.id_level=survey.level_id JOIN branch ON branch.id_branch=level.branch_id JOIN semestre ON semestre.id_semestre=survey.semestre_id"; 
 
         $result = mysqli_query($conn, $sql);
         if (mysqli_num_rows($result) > 0) {
@@ -35,18 +35,17 @@ $sql = "SELECT *,branch.branch_name FROM survey JOIN level ON level.id_level=sur
            ?> <div class="cards-container"> <?php
             while($row = mysqli_fetch_assoc($result)) {
 
-                
                 if($row['survey_statut']=="Finit"){
                     ?>
                     <div class='cards'>
                                 
+                    <a class="links" href=<?php echo "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
                         <?php echo $row['branch_name']; ?>
                         <br>
                         <?php echo  "semestre N:" . $row['semestre_id']; ?>
-
+                
                         <br><br>
                         <?php echo "créer à :".$row['survey_created_at'] ; ?>
-                        
                         
                         <div class='progress'>
                             <span>Finit</span>
@@ -54,13 +53,17 @@ $sql = "SELECT *,branch.branch_name FROM survey JOIN level ON level.id_level=sur
                                 
                             </div>
                         </div>
+                    </a>
+                
+                
+                    </div> <?php }     
 
-                    </div> <?php } 
 
 if($row['survey_statut']=="Prête"){
     ?>
     <div class='cards'>
                 
+    <a class="links" href=<?php echo "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
         <?php echo $row['branch_name']; ?>
         <br>
         <?php echo  "semestre N:" . $row['semestre_id']; ?>
@@ -72,6 +75,7 @@ if($row['survey_statut']=="Prête"){
             <span>Prête</span>
             <div class='progress-bar ready'></div>
         </div>
+    </a>
 
 
     </div> <?php } 
@@ -80,20 +84,22 @@ if($row['survey_statut']=="Prête"){
                 
             ?>
                 <div class='cards'> 
-                    <?php echo $row['branch_name']; ?>
-                    <br>
-                    <?php echo  "semestre N:" . $row['semestre_id']; ?>
+                    <a class="links" href=<?php echo "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
+                        <?php echo $row['branch_name']; ?>
+                        <br>
+                        <?php echo  "semestre N:" . $row['semestre_id']; ?>
 
-                    <br><br>
-                    <?php echo "créer à :".$row['survey_created_at'] ;?>
-                    
-                    
-                    <div class='progress'>
-                        <span class='progress-limit'>(En cours)</span>
-                        <div class='progress-bar-limit'>
-                            
+                        <br><br>
+                        <?php echo "créer à :".$row['survey_created_at'] ;?>
+                        
+                        
+                        <div class='progress'>
+                            <span class='progress-limit'>(En cours)</span>
+                            <div class='progress-bar-limit'>
+                                
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
         <?php } ?>
         

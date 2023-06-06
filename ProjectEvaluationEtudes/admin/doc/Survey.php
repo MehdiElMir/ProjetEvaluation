@@ -7,7 +7,7 @@ require_once 'db.php';
 
 class Survey {
     public $id_survey;
-    public $survey_name;
+    
     public $level_id;
     public $semestre_id;
     public $survey_statut;
@@ -30,7 +30,7 @@ class Survey {
 
             $surveyData = $surveyData[0];
         $this->id_survey = $surveyData['id_survey'];
-        $this->survey_name = $surveyData['survey_name'];
+       
         $this->level_id = $surveyData['level_id'];
         $this->semestre_id = $surveyData['semestre_id'];
         $this->survey_created_at = $surveyData['survey_created_at'];
@@ -44,7 +44,7 @@ class Survey {
         $db = new Database();
         if($this->id_survey){
             $db->update('survey', [
-                'survey_name' => $this->survey_name, 
+                
                 'level_id' => $this->level_id,
                 
                 'semestre_id' => $this->semestre_id,              
@@ -56,7 +56,6 @@ class Survey {
         }else{
             
             $this->id_survey = $db->insert('survey', [
-                'survey_name' => $this->survey_name,
                 'level_id' => $this->level_id,
                 'semestre_id' => $this->semestre_id,
                 'survey_created_at' => $this->survey_created_at,
@@ -71,7 +70,6 @@ class Survey {
             if(isset($data['level_id'])) $this->level_id = $data['level_id'];
             if(isset($data['id_survey'])) $this->id_survey = $data['id_survey'];
             if(isset($data['semestre_id'])) $this->semestre_id = $data['semestre_id'];
-            if(isset($data['survey_name'])) $this->survey_name = $data['survey_name'];
             if(isset($data['survey_statut'])) $this->survey_statut = $data['survey_statut'];
             if(isset($data['survey_created_at'])) $this->survey_created_at = $data['survey_created_at'];
             if(isset($data['Report'])) $this->Report = $data['Report'];
