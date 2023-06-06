@@ -10,7 +10,7 @@ include("../login_process/config.php");
 $dateNow = date("Y-m-d h:i:sa", strtotime("now")); 
 $id = $_POST['id'];
 
-echo $id;
+//echo $id;
 
 $action_name = $_POST['action_name'];
 $action_description= $_POST['action_description'];
