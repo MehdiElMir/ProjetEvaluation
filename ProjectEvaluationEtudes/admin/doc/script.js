@@ -83,7 +83,7 @@ $(document).ready(function () {
         $.each(data, function (index, value) {
           subject_html += "<div class='form-check'>";
           subject_html +=
-            "<input class='form-check-input subject' type='checkbox' name='subject' value='" +
+            "<input class='form-check-input subject' type='checkbox' name='subject[]' value='" +
             value.id_subject +
             "'>";
           subject_html +=

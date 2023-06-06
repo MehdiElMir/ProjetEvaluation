@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>    
+    <!-- Recuperation de session et connexion avec la base de donnees  -->
     <?php
             session_start();
             $id_professeur =  $_SESSION["id_professeur"] ;
@@ -8,7 +9,7 @@
             extract($_POST);
             include("../login_process/config.php");  
             $dateNow = date("Y-m-d h:i:sa", strtotime("now"));    
-?>
+    ?>
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,21 +21,19 @@
 
 </head>
 <body>
-
-
     <header>
         
         <nav class="p-3 shadow-lg">
             <a href="/">
                 <img src="./assets/logo.png" alt="logo mundiapolis" class="img-size">
             </a>
-            
         </nav>
-        
+
     </header>
 
 
     <!-- MAIN CONTENT -->
+    <!--AFFICHAGE DES MATIERES DANS LE SIDE BAR  -->
     <main class="main">
         
         <div class="sidebar" style="text-align:left;">
@@ -42,8 +41,8 @@
                 <p style="color:white;font-size:30px;margin-top:20px;margin-left:5px;font-weight:bold;">Matières</p>
 
                 <ul style="text-align: left;">
-                    <?php
-                    
+
+                    <?php                    
                     $stql = "SELECT `subject_name`,`subject`.`id_subject`
                     FROM `subject`, `professeur`
                     WHERE `professeur`.`id_professeur` = $id_professeur and
@@ -70,13 +69,13 @@
         </div>
         
 
-       <!---------------------------------Session HELLO ---------------------------------------- -->
+       
       
-    
+    <!-- FILTER -->
 
         <div class="main-content">
 
-        <div class="search">
+        <div class="search" style="height:100px;">
                 <form action="aside.php" style="display: flex;flex-direction: row;align-items: center;">
                     <select class="form-select form-select-sm" id="faculty">
                         <option value="default" selected="selected">--- Facultés</option>
@@ -130,21 +129,26 @@
 
            
             
-        <h3 style="width:100%;">Nom de matière</h3>
+        <h3 style="width:100%; margin-top:40px">Nom de matière :</h3>
         
-        
+        <div class="row" style="margin-top: 30px">
 
-        <table class="table">
+        <div class="col-10" >
+            <table class="table">
         <thead>
             <tr>
-            <th scope="col-2"> </th>
-            <th scope="col-6">Questions </th>
+            <th scope="col-2" class="table-primary"></th>
+            <th scope="col-6" class="table-primary">Questions </th>
 
             </tr>
         </thead>
         <tbody>
         <?php
+                // recuperation de l'id du subject de L'url
                 $id = $_GET['id'];
+              
+                
+                // requete d'affichage de question
 
                 $sql = "SELECT * FROM surveyquestion
                         JOIN question ON surveyquestion.question_id = question.id_question
@@ -170,24 +174,27 @@
                     $id_survey_question = $res['id_survey_question'];
                 
                     // $vote = $res['vote'];
-                    echo '<tr>';
+                    echo '<tr class="table-secondary">';
                     echo '<th scope="row">' . $i . '</th>';
                     echo '<td>' . $question_phrase . '</td>';
                     // echo '<td>' . $vote . '</td>';
                     echo '</tr>';
 
                     $i++;
-                }?>
-                
-                
-              
+                }
+                ?>
+                </tbody>
+            </table>
+            </div>
+
+            <div class="col-2">
+            <table class="table">
                       <thead>
                       <tr>
-                      <th scope="col-2"> </th>
-                  
-                      <th scope="col-4">Résultats</th>
+                      <th scope="col-4" >Résultats</th>
                       </tr>
                   </thead>
+                  // requete d'affichage de vote
                   <?php
                 while ($res = mysqli_fetch_array($result2)) {
                     // $question_phrase = $res['question_phrase'];
@@ -199,8 +206,8 @@
 
                     $i = 1;
 
-                    echo '<tr>';
-                    echo '<th scope="row">' . $i . '</th>';
+                    echo '<tr class="table-secondary">';
+
                     // echo '<td>' . $question_phrase . '</td>';
                     echo '<td>' . $vote . '</td>';
                     echo '</tr>';
@@ -208,44 +215,63 @@
                     $i++;
                 }
             ?>
-
             </tbody>
             </table>
+            </div>
 
-            <form action="liste_commentaires.php" method="post">
+        </div>
+
+        <div class="row align-items-start">
+        <form action="liste_commentaires.php" method="post">
             <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden>
             <button type="submit" style="margin-top:5px;" name="boutton-commentaire" class="btn btn-secondary" 
             onclick="window.location.href='liste_commentaires.php'">Afficher les commentaires</button>
             
         </form>
-            </div>
+        </div>
+
+        <hr>
+
         
-            <
+                
+                
+              
+
+            
+            
+        
+            <div class="row">
+                <div class="col-12">
+                <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
+                <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Objet de l'action :</span>
+                        <input type="text" class="form-control" name="action_name" id="action_name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
+
+                <!-- == action a saisir== -->
+                    <div class="mb-3" >
+                        
+                        <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
+                    </div>
+
+            <div style="margin-top:5px;">
+            <button type="submit" class="btn btn-success" style="float:right;">Ajouter une action</button>
+            
+            </div>
+
+        </form>
+                </div>
+            </div>
+            
 
            
        
                 <!-- objet action  = = action name -->
      
-    <form method="post" form action="../prof/action.php"  class="login-form-control d-flex flex-column py-12">
-              <div class="mb-3"  style=" width:800px; margin-top :20px; ">
-                <label  for="exampleFormControlTextarea1" class="form-label">objet action:</label>
-                <textarea class="form-control form-control-lg" name="action_name" id="action_name" rows="3"></textarea>
-            </div>
-
-            <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden id="">
-
-                <!-- == action a saisir== -->
-            <div class="mb-3" style="width:800px; margin-top :20px;">
-                <label  for="exampleFormControlTextarea1" class="form-label">Saisir une action:</label>
-                <textarea class="form-control form-control-lg" id="action_description" name="action_description" rows="3"></textarea>
-            </div>
-
-            <div style="margin-top:20px;">
-            <button type="submit" class="btn btn-success" >Ajouter une action</button>
-            
-            </div>
-
-        </form>
+    
 
     </main>
     <script src="prof_layout.js" ></script>
