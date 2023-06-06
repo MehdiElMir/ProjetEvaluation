@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="../css/questionnaire.css">
     <link rel="stylesheet" href="../css/enquete.css">
     <link rel="stylesheet" href="../css/archive.css">
+    <link rel="stylesheet" href="../css/statistiques.css">
 </head>
 <body>
-<?php include '../doc/Layout/body.php'; ?>
+<?php //include '../doc/Layout/body.php'; ?>
     <header>
         <nav class="p-3 shadow-lg navbar">
             <a href="/">
@@ -27,11 +28,11 @@
         <div class="sidebar">
             <div class="sidebar-top">
                 <ul class="sidebar-list">
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Enseignants</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/filiers.php">Les Filères</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
+                    <li><a href="/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
+                    <li><a href="/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Enseignants</a></li>
+                    <li><a href="/ProjectEvaluationEtudes/admin/pages/filiers.php">Les Filères</a></li>
+                    <li><a href="/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
+                    <li><a href="/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
                 </ul>
             </div>
             <p class="edit">Edit</p>

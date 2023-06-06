@@ -1,0 +1,19 @@
+.chart-statistique{
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.commentaires{
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.table-prof{
+    width: 100%;
+    table-layout: auto;
+}
+
+.table-prof > thead {
+    background-color: black;
+    color: white;
+}
