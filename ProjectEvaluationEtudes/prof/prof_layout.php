@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>    
+    <!-- Recuperation de session et connexion avec la base de donnees  -->
     <?php
             session_start();
             $id_professeur =  $_SESSION["id_professeur"] ;
@@ -8,7 +9,7 @@
             extract($_POST);
             include("../login_process/config.php");  
             $dateNow = date("Y-m-d h:i:sa", strtotime("now"));    
-?>
+    ?>
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,21 +21,19 @@
 
 </head>
 <body>
-
-
     <header>
         
         <nav class="p-3 shadow-lg">
             <a href="/">
                 <img src="./assets/logo.png" alt="logo mundiapolis" class="img-size">
             </a>
-            
         </nav>
-        
+
     </header>
 
 
     <!-- MAIN CONTENT -->
+    <!--AFFICHAGE DES MATIERES DANS LE SIDE BAR  -->
     <main class="main">
         
         <div class="sidebar" style="text-align:left;">
@@ -42,8 +41,8 @@
                 <p style="color:white;font-size:30px;margin-top:20px;margin-left:5px;font-weight:bold;">Matières</p>
 
                 <ul style="text-align: left;">
-                    <?php
-                    
+
+                    <?php                    
                     $stql = "SELECT `subject_name`,`subject`.`id_subject`
                     FROM `subject`, `professeur`
                     WHERE `professeur`.`id_professeur` = $id_professeur and
@@ -70,11 +69,11 @@
         </div>
         
 
-       <!---------------------------------Session HELLO ---------------------------------------- -->
+       
       
-    
+    <!-- FILTER -->
 
-        <div class="main-content container">
+        <div class="main-content">
 
         <div class="search" style="height:100px;">
                 <form action="aside.php" style="display: flex;flex-direction: row;align-items: center;">
@@ -144,7 +143,11 @@
         </thead>
         <tbody>
         <?php
+                // recuperation de l'id du subject de L'url
                 $id = $_GET['id'];
+              
+                
+                // requete d'affichage de question
 
                 $sql = "SELECT * FROM surveyquestion
                         JOIN question ON surveyquestion.question_id = question.id_question
@@ -190,7 +193,7 @@
                       <th scope="col-4" >Résultats</th>
                       </tr>
                   </thead>
-                  <tbody>
+                  // requete d'affichage de vote
                   <?php
                 while ($res = mysqli_fetch_array($result2)) {
                     // $question_phrase = $res['question_phrase'];

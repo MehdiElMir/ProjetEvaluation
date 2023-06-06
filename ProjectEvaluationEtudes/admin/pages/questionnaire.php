@@ -1,56 +1,69 @@
+
+
 <?php include "../includes/layout.php" ?>
 
-        <div class="main-content">
+<?php 
 
-            <h1 class="mb-5">Gerer Questions</h1>
+$servername = 'localhost';
+$username = 'root';
+$database_name ='projet_evaluation';
+$password = '';
+
+// Create connection
+$conn = mysqli_connect($servername,$username,$password,$database_name);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}else {
+
+    //echo"cnx etablie";
+}
+?>
+
+
+
+
+<div class="main-content">
+    <?php
+    if (isset($_GET["msg"])) {
+      $msg = $_GET["msg"];
+      echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+      ' . $msg . '
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
+    }
+    ?>
+   <h1 style="text-align: center;">QUESTIONNAIRE</h1>
+
+    <a href="questions.php" class="btn btn-dark mb-3">Add New</a>
+
+    <table class="table table-hover text-center">
+      <thead class="table-dark">
+        <tr>
+          
+          <th scope="col">QUESTION</th>
+          <th scope="col">ACTION</th>
+          </tr>
+      </thead>
+
+      <?php
+        $sql = "SELECT * FROM `question`";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+        ?>
+          <tr>
             
-            <div class="ajouter-questionnaire d-flex flex-grow-1 gap-2">
-                <input type="text" name="question" id="" placeholder="Inserer Votre Question SVP" class="rounded-4 p-3 flex-grow-1">
-                <button type="button" class="btn btn-custom p-2 rounded-4">Ajouter une Question</button>
-            </div>
+            <td><?php echo $row["question_phrase"] ?></td>
 
-            <div class="question-container d-flex flex-column gap-3 mt-5">
-                <div class="question-title d-flex">
-                    <h3 class="flex-grow-1">Questions</h3>
-                    <h3 class="question-actions">Actions</h3>
-                </div>
-                <div class="question1 d-flex">
-                    <p class="flex-grow-1">Question 1</p>
-                    <div class="question-settings">
-                        <button class="btn btn-warning">modifier</button>
-                        <button class="btn btn-danger">supprimer</button>
-                    </div>
-                </div>
-                <div class="question1 d-flex">
-                    <p class="flex-grow-1">Question 1</p>
-                    <div class="question-settings">
-                        <button class="btn btn-warning">modifier</button>
-                        <button class="btn btn-danger">supprimer</button>
-                    </div>
-                </div>
-                <div class="question1 d-flex">
-                    <p class="flex-grow-1">Question 1</p>
-                    <div class="question-settings">
-                        <button class="btn btn-warning">modifier</button>
-                        <button class="btn btn-danger">supprimer</button>
-                    </div>
-                </div>
-                <div class="question1 d-flex">
-                    <p class="flex-grow-1">Question 1</p>
-                    <div class="question-settings">
-                        <button class="btn btn-warning">modifier</button>
-                        <button class="btn btn-danger">supprimer</button>
-                    </div>
-                </div>
-                <div class="question1 d-flex">
-                    <p class="flex-grow-1">Question 1</p>
-                    <div class="question-settings">
-                        <button class="btn btn-warning">modifier</button>
-                        <button class="btn btn-danger">supprimer</button>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-
-<?php include "../includes/footer.php" ?>
+            <td>
+              <a href="edit_question.php?id=<?php echo $row["id_question"] ?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
+              <a href="delete_question.php?id=<?php echo $row["id_question"] ?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>
+            </td>
+          </tr>
+        <?php
+        }
+        ?>
+      </tbody>
+    </table>
+  </div>

@@ -9,9 +9,6 @@ class Question {
     public $id_question;
     public $question_phrase;
     
-    
-   
-    
 
     public function __construct($id_question = null) {
         if($id_question){
