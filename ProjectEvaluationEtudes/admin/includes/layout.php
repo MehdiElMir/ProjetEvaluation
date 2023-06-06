@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/statistiques.css">
 </head>
 <body>
-<?php include '../doc/Layout/body.php'; ?>
+<?php //include '../doc/Layout/body.php'; ?>
     <header>
         <nav class="p-3 shadow-lg navbar">
             <a href="/">
