@@ -57,7 +57,7 @@ $sql = "DELETE FROM `question` WHERE id_question = $id_question";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-  header("Location: questionnaire.php?msg=questionne supprimer");
+  header("Location: questionnaire.php?msg=question supprimée");
 } else {
   echo "Failed: " . mysqli_error($conn);
 }

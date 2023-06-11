@@ -32,7 +32,7 @@
                 <div class="session-containter d-flex gap-3">
                     <div id="semestre" name="semestre">
                         <?php foreach ($semestre as $semestre) : ?>
-                            <input type="radio" id="<?= $semestre['id_semestre'] ?>" name="semestre" value="<?= $semestre['id_semestre'] ?>">
+                            <input type="radio" id="<?= $semestre['id_semestre']?>" name="semestre" value="<?= $semestre['id_semestre'] ?>">
                             <label for="<?= $semestre['id_semestre'] ?>"><?= $semestre['semestre_name'] ?></label>
                         <?php endforeach; ?>
                     </div>
