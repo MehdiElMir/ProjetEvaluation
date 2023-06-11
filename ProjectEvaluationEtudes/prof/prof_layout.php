@@ -134,12 +134,11 @@
         <div class="row" style="margin-top: 30px">
 
         <div class="col-10" >
-            <table class="table">
+            <table class="table shadow table-striped">
         <thead>
             <tr>
-            <th scope="col-2" class="table-primary"></th>
-            <th scope="col-6" class="table-primary">Questions </th>
-
+            <th scope="col-2" ></th>
+            <th scope="col-6" >Questions </th>
             </tr>
         </thead>
         <tbody>
@@ -174,7 +173,7 @@
                     $id_survey_question = $res['id_survey_question'];
                 
                     // $vote = $res['vote'];
-                    echo '<tr class="table-secondary">';
+                    echo '<tr>';
                     echo '<th scope="row">' . $i . '</th>';
                     echo '<td>' . $question_phrase . '</td>';
                     // echo '<td>' . $vote . '</td>';
@@ -188,7 +187,7 @@
             </div>
 
             <div class="col-2">
-            <table class="table">
+            <table class="table shadow">
                       <thead>
                       <tr>
                       <th scope="col-4" >Résultats</th>
@@ -224,7 +223,7 @@
         <div class="row align-items-start">
         <form action="liste_commentaires.php" method="post">
             <input type="text" name="id" value="<?php echo $_GET["id"] ?>" hidden>
-            <button type="submit" style="margin-top:5px;" name="boutton-commentaire" class="btn btn-secondary" 
+            <button type="submit" style="margin-top:5px;" name="boutton-commentaire" class="btn btn-secondary shadow" 
             onclick="window.location.href='liste_commentaires.php'">Afficher les commentaires</button>
             
         </form>
