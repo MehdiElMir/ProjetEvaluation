@@ -75,6 +75,8 @@
 
         <div class="main-content">
 
+        
+
         <div class="search" style="height:100px;">
                 <form action="aside.php" style="display: flex;flex-direction: row;align-items: center;">
                     <select class="form-select form-select-sm" id="faculty">
@@ -126,10 +128,24 @@
 
                     </select>       
             </form>
+                    
+            <?php 
+            if(isset($_GET['id'])){
+        ?>
+        <?php 
+                // recuperation de l'id du subject de L'url
+                $id = $_GET['id'];
+                $sql = "SELECT subject.subject_name FROM subject WHERE subject.id_subject = $id;";
+                $resultat = mysqli_query($connexion, $sql);
+                while ($res = mysqli_fetch_array($resultat)) {
+                    $subject_name = $res['subject_name'];
 
-           
-            
-        <h3 style="width:100%; margin-top:40px">Nom de matière :</h3>
+                    echo '<h3 style="width:100%; margin-top:40px">Nom de matière :    ' . $subject_name . '</h3>'; 
+                    
+                }
+
+        ?>    
+        <!-- <h3 style="width:100%; margin-top:40px">Nom de matière :</h3> -->
         
         <div class="row" style="margin-top: 30px">
 
@@ -193,25 +209,23 @@
                       <th scope="col-4" >Résultats</th>
                       </tr>
                   </thead>
-                  // requete d'affichage de vote
+                  <tbody>
+                    
                   <?php
                 while ($res = mysqli_fetch_array($result2)) {
                     // $question_phrase = $res['question_phrase'];
                     // $id_question = $res['id_question'];
                     // $id_survey_question = $res['id_survey_question'];    
                    
-                    $vote = $res['vote'];
-                    $id_survey=$res['id_survey'];
-
-                    $i = 1;
-
-                    echo '<tr class="table-secondary">';
-
-                    // echo '<td>' . $question_phrase . '</td>';
-                    echo '<td>' . $vote . '</td>';
+                    $moyenne = $res['vote'];
+                    
+                    echo '<tr>';
+                    echo '<td>' . $moyenne .'</td>';
+                    
+                    
+                    // echo '<td>' . $vote . '</td>';
                     echo '</tr>';
-
-                    $i++;
+                    
                 }
             ?>
             </tbody>
@@ -265,7 +279,11 @@
                 </div>
             </div>
             
-
+            <?php }
+            else {
+                echo 'Choisissez une matière';
+            }
+            ?>
            
        
                 <!-- objet action  = = action name -->

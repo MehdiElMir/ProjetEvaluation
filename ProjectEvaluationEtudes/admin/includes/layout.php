@@ -31,14 +31,14 @@
         <div class="sidebar">
             <div class="sidebar-top">
                 <ul class="sidebar-list">
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Actions</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/student.php">Les Etudiants</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/classe.php">Les Classes</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/professeurs.php">Les professeurs</a></li>          
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
-                    <li><a href="/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/" id="logout-link">Logout</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/enquetes.php">Les Enquêtes</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/enseignants.php">Les Actions</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/questionnaire.php">Les Questions</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/student.php">Les Etudiants</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/classe.php">Les Classes</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/professeurs.php">Les professeurs</a></li>          
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/archive.php">Archives</a></li>
+                    <li><a href="/ProjetEvaluation/ProjectEvaluationEtudes/admin/" id="logout-link">Logout</a></li>
 
                 </ul>
             </div>
