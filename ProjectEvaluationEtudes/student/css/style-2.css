@@ -1,0 +1,99 @@
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h3 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .table th {
+    background-color: #f9f9f9;
+  }
+  
+  /* Style des boutons radio */
+  .table input[type="radio"] {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .table label {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  
+  .table label:before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 1px;
+  }
+  
+  .table label:hover:before {
+    border-color: #007bff;
+  }
+  
+  .table input[type="radio"]:checked + label:before {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  /* Style des zones de commentaire */
+  .table textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  /* Style du bouton de soumission */
+  #submitButton {
+    display: block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #submitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }

@@ -1,0 +1,122 @@
+:root{
+    --primary: #1A7B8FBF;
+    --secondary: #0D3C48;
+}
+
+input[type=text],
+input[type=submit]{
+    width: 500px;
+    max-width: 500px;
+    outline: none;
+}
+
+.img-size{
+    height: 80px;
+}
+
+.login-image{
+    background: url("../assets/etudiant.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.login-image::before{
+    content: "";
+    background: var(--primary);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    opacity: .5;
+    display: block;
+    position: absolute;
+}
+
+.login-image > h2 {
+    color: #fff;
+    font-size: 60px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--primary);
+    padding: 5px 10px;
+    position: relative;
+    z-index: 22;
+}
+
+.login{
+    width: 100%;
+    height: 100%;
+}
+
+.login-image, .login-form{
+    width: 50%;
+    height: 700px;
+    max-height: 700px;
+}
+
+.login-form{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    padding-top: 100px;
+    padding-left: 50px;
+}
+
+.login-form-control{
+    height: 100%;
+    width: 100%;
+    gap: 20px;
+    color: #000;
+    align-items: start;
+}
+
+.input-fields{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.submit-button{
+    background: var(--primary);
+    columns: #fff;
+}
+
+.footer{
+    background: var(--secondary);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.copyright{
+    font-weight: bold;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 1100px){
+    .login{
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .login-form, .login-image{
+        width: 100%;
+    }
+
+    .login-form{
+        order: 2;
+    }
+
+    .login-image{
+        height: 200px;
+    }
+}
