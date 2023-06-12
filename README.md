@@ -5,6 +5,8 @@ installation de XAMPP
 
 Importer la base de donnée avec le nom project_evaluation qui se trouve dans root directory de ce projet
 
+cloner ce projet dans xampp/htdocs
+
 Pour utiliser l'authentification google, il faut suivre ces étapes
 
 - install composer for Php from this link
