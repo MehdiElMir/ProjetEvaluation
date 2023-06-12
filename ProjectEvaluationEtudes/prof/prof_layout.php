@@ -167,7 +167,8 @@
 
                 $sql = "SELECT * FROM surveyquestion
                         JOIN question ON surveyquestion.question_id = question.id_question
-                        WHERE surveyquestion.subject_id = $id";
+                        WHERE surveyquestion.subject_id = $id
+                        AND surveyquestion.survey_id =1; ";
 
                 $sqll = "SELECT survey.id_survey, surveyquestion.subject_id,surveyquestion.question_id, surveyquestion.subject_id,AVG(response.response_note) As vote
                 FROM response 
@@ -221,8 +222,6 @@
                     
                     echo '<tr>';
                     echo '<td>' . $moyenne .'</td>';
-                    
-                    
                     // echo '<td>' . $vote . '</td>';
                     echo '</tr>';
                     

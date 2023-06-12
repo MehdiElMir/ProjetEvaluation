@@ -28,7 +28,7 @@ if (isset($_POST['submit'])){
     $result = mysqli_query($conn, $sql);
 
     if($result){
-        header("Location: /ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/professeurs.php");
+        header("Location: /ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/professeurs.php");
     }
     else{
         echo "failed" . mysqli_error($conn);

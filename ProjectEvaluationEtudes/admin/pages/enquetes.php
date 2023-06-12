@@ -39,7 +39,7 @@ $sql = "SELECT * , branch.branch_name FROM survey JOIN level ON level.id_level=s
                     ?>
                     <div class='cards'>
                                 
-                    <a class="links" href=<?php echo "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
+                    <a class="links" href=<?php echo "/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
                         <?php echo $row['branch_name']; ?>
                         <br>
                         <?php echo  "semestre N:" . $row['semestre_id']; ?>
@@ -63,7 +63,7 @@ if($row['survey_statut']=="Prête"){
     ?>
     <div class='cards'>
                 
-    <a class="links" href=<?php echo "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
+    <a class="links" href=<?php echo "/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
         <?php echo $row['branch_name']; ?>
         <br>
         <?php echo  "semestre N:" . $row['semestre_id']; ?>
@@ -84,7 +84,7 @@ if($row['survey_statut']=="Prête"){
                 
             ?>
                 <div class='cards'> 
-                    <a class="links" href=<?php echo "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
+                    <a class="links" href=<?php echo "/ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/statistiques.php?id=".$row['id_survey'] ?> rel="noopener noreferrer">
                         <?php echo $row['branch_name']; ?>
                         <br>
                         <?php echo  "semestre N:" . $row['semestre_id']; ?>

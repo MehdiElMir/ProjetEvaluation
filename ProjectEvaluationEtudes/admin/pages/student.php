@@ -27,7 +27,7 @@ if (!$conn) {
     </div>';
     }
     ?>
-   <h1 style="text-align: center;">Etudiens</h1>
+   <h1 style="text-align: center;">Etudiants</h1>
 
     <table class="table table-hover text-center">
       <thead class="table-dark">

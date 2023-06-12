@@ -51,6 +51,6 @@ var logoutLink = document.getElementById("logout-link");
 // Ajoutez un écouteur d'événement de clic sur le lien
 logoutLink.addEventListener("click", function(event) {
     event.preventDefault();
-    window.location.href = "/ProjetEvaluation-2/ProjectEvaluationEtudes/admin/";
+    window.location.href = "/ProjetEvaluation/ProjectEvaluationEtudes/admin/";
 });
 </script>

@@ -53,7 +53,7 @@ $survey->Report ="Report";
     }
 }
 
-header("Location: /ProjetEvaluation-2/ProjectEvaluationEtudes/admin/pages/enquetes.php");
+header("Location: /ProjetEvaluation/ProjectEvaluationEtudes/admin/pages/enquetes.php");
 
 
 
